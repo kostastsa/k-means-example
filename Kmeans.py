@@ -103,18 +103,14 @@ def misclassification_error(d,sigma):
     return error
 
 
-
-errors=[]
-dist=[]
-t=0
-e=1
 sigma=0.05
-while e>0.0001:
-   e = misclassification_error(t*0.01/0.05,sigma)
+errors=[]
+sigmas=[]
+for t in range(100):
+   e = misclassification_error(0.5,sigma*t)
    errors.append(e)
-   dist.append(t*0.01/0.05)
-   t+=1
-plt.plot(dist,errors)
+   sigmas.append(sigma*t)
+plt.plot(sigmas,errors)
 plt.show()
 
 #print(misclassification_error(0.1))
